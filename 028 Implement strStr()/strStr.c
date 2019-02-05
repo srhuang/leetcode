@@ -17,15 +17,16 @@ History :
 //Function area
 int strStr(char* haystack, char* needle) {
 
-    if(*haystack=='\0' && *needle=='\0')
+    if(*needle=='\0')
         return 0;
+    if (*haystack == '\0')
+        return -1;
 
-    char *input = haystack;
     int i=0;
-    while(*input != '\0'){
+    while(*haystack != '\0'){
         char *pattern = needle;
-        printf("parsing : (%c)\t", *input);
-        char *start = input;
+        printf("parsing : (%c)\t", *haystack);
+        char *start = haystack;
         while(*pattern != '\0'){
             printf("%c ", *pattern);
             if(*start != *pattern){
@@ -40,7 +41,7 @@ int strStr(char* haystack, char* needle) {
             return i;
 
         //next run
-        input++;
+        haystack++;
         i++;
     }
 
