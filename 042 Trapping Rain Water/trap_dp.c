@@ -1,5 +1,5 @@
 /*****************************************************************
-Name    :trap
+Name    :trap_dp
 Author  :srhuang
 Email   :lukyandy3162@gmail.com
 History :
@@ -20,7 +20,7 @@ History :
 int trap(int* height, int heightSize) {
     if(0 == heightSize)
         return 0;
-    
+
     int left_max[heightSize];
     int right_max[heightSize];
     int answer = 0;
