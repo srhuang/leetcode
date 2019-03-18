@@ -51,9 +51,11 @@ int main(){
     int **grid = malloc(sizeof(int*)*row);
     for(int i=0; i<row; i++){
         grid[i] = malloc(sizeof(int)*col);
+        grid[i] = test_data[i];
+        /*
         for(int j=0; j<col; j++){
             grid[i][j] = test_data[i][j];
-        }
+        }*/
     }
 
     int answer = minPathSum(grid, row, col);
