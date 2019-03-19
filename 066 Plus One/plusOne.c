@@ -23,13 +23,13 @@ int* plusOne(int* digits, int digitsSize, int* returnSize) {
     
     digits[digitsSize-1]++;
 
-    int carry =  digits[digitsSize-1]/10;
-    digits[digitsSize-1] %= 10;
-
-    for(int i=digitsSize-2; i>=0; i--){
+    int carry = 0;
+    int i=digitsSize-1;
+    while(i>=0){
         digits[i] += carry;
         carry =  digits[i]/10;
         digits[i] %= 10;
+        i--;
         //printf(" %d", digits[i]);
     }
 
@@ -56,7 +56,7 @@ int* plusOne(int* digits, int digitsSize, int* returnSize) {
 
 /*==============================================================*/
 int main(){
-    int digits[]={8,9,9,9};
+    int digits[]={9,9,9,9};
     int size = sizeof(digits)/sizeof(int);
     int returnSize = 0;
 
