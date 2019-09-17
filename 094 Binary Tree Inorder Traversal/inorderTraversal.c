@@ -1,5 +1,5 @@
 /*****************************************************************
-Name    :BTinorder
+Name    :inorderTraversal
 Author  :srhuang
 Email   :lukyandy3162@gmail.com
 History :
