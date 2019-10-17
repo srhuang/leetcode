@@ -8,6 +8,7 @@ History :
 #include <iostream>
 #include <sstream>
 #include <queue>
+#include <stack>
 using namespace std;
 
 /*==============================================================*/
@@ -90,12 +91,54 @@ public:
         dfs(parent->left, result);
         dfs(parent->right, result);
     }
+
+    vector<int> preorderTraversalIteration(TreeNode* root) {
+        vector<int> result;
+        if(NULL==root)
+            return result;
+
+        stack<TreeNode*> st;
+        st.push(root);
+
+        while(!st.empty()){
+            TreeNode *current = st.top();
+            st.pop();
+
+            result.push_back(current->val);
+
+            if(current->right)
+                st.push(current->right);
+            if(current->left)
+                st.push(current->left);
+        }
+
+        return result;
+    }
 };
 
 /*==============================================================*/
 int main(int argc, char const *argv[]){
     const char *input = "1,2,3,x,x,4,5,6,7";
     BinaryTree BT(input);
+
+    Solution sol;
+    vector<int> recursion = sol.preorderTraversal(BT.root);
+
+    vector<int>::iterator it;
+    cout << "Recursion :";
+    for(it=recursion.begin(); it!=recursion.end(); it++)
+    {
+        cout << " " << *it ;
+    }
+    cout << endl;
+
+    vector<int> iteration = sol.preorderTraversalIteration(BT.root);
+    cout << "Iteration :";
+    for(it=iteration.begin(); it!=iteration.end(); it++)
+    {
+        cout << " " << *it ;
+    }
+    cout << endl;
 
     return 0;
 }
