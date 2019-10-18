@@ -6,6 +6,9 @@ History :
     20190923 Initial Version
 *****************************************************************/
 #include <iostream>
+#include <sstream>
+#include <stack>
+#include <queue>
 using namespace std;
 
 /*==============================================================*/
