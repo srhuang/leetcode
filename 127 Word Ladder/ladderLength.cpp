@@ -24,6 +24,9 @@ public:
         unordered_set<string> dict(wordList.begin(), wordList.end());
         queue<string> q; //for BFS
 
+        //to speed up, using set to store the words in the same ladder
+        unordered_set<string> ladder_words;
+
         //initialization
         q.push(beginWord);
         int ladder = 1;
@@ -31,6 +34,12 @@ public:
         while(!q.empty()){
             //先記錄這一層(ladder)的個數
             int n = q.size();
+
+            //erase the last words in the dictionary
+            for(string w:ladder_words){
+                dict.erase(w);
+            }
+            ladder_words.clear();
 
             //handle this ladder
             for(int i=0; i<n; i++){
@@ -43,9 +52,6 @@ public:
                     return ladder;
                 }
 
-                //insert the next level words
-                dict.erase(word);
-
                 //find the next level words in dictionary
                 for(int j=0; j<word.size(); j++){
                     //記錄該位置原始的字元
@@ -56,6 +62,7 @@ public:
                         word[j] = 'a'+k;
                         if(dict.find(word) != dict.end())
                         {//find the word in dictionary
+                            ladder_words.insert(word);
                             q.push(word);
                         }
                     }
